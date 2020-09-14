@@ -1,0 +1,122 @@
+using System;
+
+namespace Godzina_Chaosu
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int j = 0; j < t; j++)
+            {
+
+
+                string[] s = Console.ReadLine().Split(':');
+
+                int gg = int.Parse(s[0]);
+                int mm = int.Parse(s[1]);
+
+                bool check = false;
+
+                int czas = NaMinuty(gg, mm);
+
+                int i = 1;
+
+
+                while (!check)
+                {
+                    czas += i;
+                    if (czas >= 1440)
+                    {
+                        czas = 0;
+                    }
+
+                    if (CzyPalindor(NaGodzine(czas)))
+                    {
+
+                        Console.WriteLine(WypiszGodzine(czas));
+                        check = true;
+                    }
+                    else
+                    {
+                        check = false;
+                    }
+                }
+            }
+        }
+
+        static int NaMinuty(int gg, int mm)
+        {
+
+            int godzina = gg * 60 + mm;
+            
+            return godzina;
+        }
+
+        static string NaGodzine(int czas)
+        {
+            string s1 = (czas / 60).ToString();
+            string s2 = (czas % 60).ToString();
+            string ss;
+            if (s1 == "0")
+            {
+                ss = s2;
+                return ss;
+            }
+
+            if(s2.Length < 2)
+            {
+                s2 = "0" + s2;
+            }
+            //Console.WriteLine(s1);
+
+            //Console.WriteLine(s2);
+            ss = s1 + s2;
+            return ss;
+        }
+
+        static bool CzyPalindor(string s)
+        {
+            string temp = s;
+            if (s.Length == 1) return true;
+            bool palindor = false;
+            for (int i = 0, j = s.Length - 1; i < j; i++, j--)
+            {
+                if (s[i] == temp[j]) palindor = true;
+
+                else
+                {
+                    palindor = false;
+                    break;
+                }
+
+            }
+            if (palindor) return true;      //Console.WriteLine("jest");
+
+            else return false;              //Console.WriteLine("nie jest");
+
+        }
+
+        static string WypiszGodzine(int czas)
+        {
+            string s = czas.ToString();
+            if (s.Length == 1) return $"00:0{s}";
+
+            int gg = czas / 60;
+            int mm = czas % 60;
+            string g;
+            string m;
+
+            if (gg < 10) g = $"0{gg}";
+            else g = $"{gg}";
+
+            if (mm < 10) m = $"0{mm}";
+            else m = $"{mm}";
+
+            return g + ":" + m;
+
+        }
+    }
+}
+
