@@ -1,0 +1,40 @@
+using System;
+
+namespace Rodzaje_trojkatow
+{
+    class Program
+    {
+        static void Main()
+        {
+            string s;
+            while ((s = Console.ReadLine()) != null)
+            {
+                string[] ss = s.Split(' ');
+
+                int[] tab = new int[3];
+
+                for (int i = 0; i < 3; i++)
+                {
+                    tab[i] = int.Parse(ss[i]);
+                }
+
+                Array.Sort(tab);
+
+                if (CzyTrojkat(tab))
+                {
+                    if (tab[0] * tab[0] + tab[1] * tab[1] == tab[2] * tab[2]) Console.WriteLine("prostokatny");
+                    else if (tab[0] * tab[0] + tab[1] * tab[1] > tab[2] * tab[2]) Console.WriteLine("ostrokatny");
+                    else Console.WriteLine("rozwartokatny");
+                }
+                else Console.WriteLine("brak");
+            }
+        }
+
+        static bool CzyTrojkat(int[] tab)
+        {
+            if (tab[0] + tab[1] <= tab[2]) return false;
+            else return true;
+        }
+    }
+
+}
