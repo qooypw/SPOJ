@@ -1,0 +1,109 @@
+using System;
+using System.ComponentModel;
+
+namespace ZabawneDodawaniePiotrusia
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Przechowuje liczbe testow//
+            int liczbaTestow = int.Parse(Console.ReadLine());
+
+            //Przechowuje wyniki do wyswietlenia//
+            string[] tablicaWynikow = new string[liczbaTestow];
+
+            for (int i = 0; i < liczbaTestow; i++)
+            {
+                string liczbaDoTestu = Console.ReadLine();
+                if (liczbaDoTestu.Length == 1)
+                {
+                    //To jest palindor jednoliczbowy//
+                    tablicaWynikow[i] = liczbaDoTestu + " " + 0;
+                    
+                }
+                else
+                {
+                    if (CzyPalindor(liczbaDoTestu))
+                    {
+                        //To jest palindor wieloliczbowy//
+                        tablicaWynikow[i] = liczbaDoTestu + " " + 0;
+                    }
+                    else
+                    {
+                        //Console.WriteLine("huja");
+                        int count = 1;
+                        bool sprawdzian = false;
+                        while (!sprawdzian)
+                        {
+                            liczbaDoTestu = ZrobicPalindor(liczbaDoTestu);
+                            if (CzyPalindor(liczbaDoTestu))
+                            {
+                                sprawdzian = true;
+                                tablicaWynikow[i] = liczbaDoTestu + " " + count;
+                            }
+                            else
+                            {
+                                //liczbaDoTestu = ZrobicPalindor(liczbaDoTestu);
+                                count++;
+                                //Console.WriteLine(count);
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < liczbaTestow; i++)
+            {
+                Console.WriteLine(tablicaWynikow[i]);
+            }
+        }
+
+        static bool CzyPalindor(string s)
+        {
+            string temp = s;
+            bool palindor = false;
+            for (int i = 0, j = s.Length-1; i < j; i++,j--)
+            {
+                
+                if (s[i] == temp[j])
+                {
+                    palindor = true;
+                }
+                else
+                {
+                    palindor = false;
+                    break; 
+                }
+                
+            }
+            if (palindor)
+            {
+                //Console.WriteLine("jest");
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("nie jest");
+                return false;
+            }
+        }
+
+        static string ZrobicPalindor(string s)
+        {
+            int pierwotnaLiczba = int.Parse(s);
+
+            //Tutaj robie odwotny string
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            string temp = new string(charArray);
+            //////////////////////////////
+
+            int odwroconaLiczba = int.Parse(temp);
+
+            int sum = pierwotnaLiczba + odwroconaLiczba;
+
+            string suma = sum.ToString();
+            return suma;
+        }
+    }
+}
