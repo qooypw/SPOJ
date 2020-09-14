@@ -1,0 +1,50 @@
+using System;
+
+namespace Problem_Collatza
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                int s = int.Parse(Console.ReadLine());
+
+                bool warunek = false;
+
+                int count = 0;
+                while (!warunek)
+                {
+                    if(s == 1)
+                    {
+                        Console.WriteLine(count);
+                        warunek = true;
+                    }
+                    else if (s % 2==0)
+                    {
+                        s = Parzysta(s);
+                        count++;
+                    }
+                    else
+                    {
+                        s = NieParzysta(s);
+                        count++;
+                    }
+                }
+
+            }
+        }
+
+        static int Parzysta(int l)
+        {
+            return l/2;
+        }
+
+        static int NieParzysta(int l)
+        {
+            return 3 * l + 1;
+        }
+    }
+}
