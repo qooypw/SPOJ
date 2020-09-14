@@ -1,0 +1,130 @@
+using System;
+using System.Linq;
+
+namespace SystemyPozycyjne
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                int l = int.Parse(Console.ReadLine());
+
+                Sys16(l);
+                Sys11(l);
+
+            }
+
+        }
+
+        static void Sys16(int l)
+        {
+
+            int dlugosc = Size(l,16)+1;           
+            string[] liczba = new string[dlugosc];
+
+            for (int i = 0; i < dlugosc; i++)
+            {
+                if (l < 16 )
+                {
+
+                    liczba[i] = ABCDEF(l,16);
+                    break;
+                }
+                else
+                {
+                    if( l % 16 > 9)
+                    {
+                        liczba[i] = ABCDEF(l%16,16);
+                    }
+                    else
+                    {
+                        liczba[i] = (l % 16).ToString();
+                    }
+                    l /= 16;
+                }
+            }
+
+            for (int i = dlugosc-1; i >= 0; i--)
+            {
+                Console.Write(liczba[i]);
+            }
+            Console.Write(" ");
+
+        }
+
+        static void Sys11(int l)
+        {
+
+            int dlugosc = Size(l, 11) + 1;
+            string[] liczba = new string[dlugosc];
+
+            for (int i = 0; i < dlugosc; i++)
+            {
+                if (l < 11)
+                {
+
+                    liczba[i] = ABCDEF(l, 11);
+                    break;
+                }
+                else
+                {
+                    if (l % 11 > 9)
+                    {
+                        liczba[i] = ABCDEF(l % 11, 11);
+                    }
+                    else
+                    {
+                        liczba[i] = (l % 11).ToString();
+                    }
+                    l /= 11;
+                }
+            }
+
+            for (int i = dlugosc - 1; i >= 0; i--)
+            {
+                Console.Write(liczba[i]);
+            }
+            Console.WriteLine();
+        }
+
+
+        static string ABCDEF(int l, int sys)
+        {
+            string s;
+
+            if(sys == 16)
+            {
+                if (l == 10) s = "A";
+                else if (l == 11) s = "B";
+                else if (l == 12) s = "C";
+                else if (l == 13) s = "D";
+                else if (l == 14) s = "E";
+                else if (l == 15) s = "F";
+                else s = l.ToString();
+                return s;
+            }
+            else
+            {
+                if (l == 10) s = "A";
+                else s = l.ToString();
+                return s;
+            }
+
+        }
+
+        static int Size(int l, int sys)
+        {           
+            if (l / sys < sys)
+            {
+                return 1;
+            }
+            
+            return 1+ Size(l/sys,sys);
+            
+        }
+    }
+}
