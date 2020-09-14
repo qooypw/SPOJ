@@ -1,0 +1,33 @@
+using System;
+
+namespace Przedszkolanka
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            short n = short.Parse(Console.ReadLine());
+            int[] output = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                string s = Console.ReadLine();
+                string[] zestaw = s.Split();
+
+                int a = int.Parse(zestaw[0]);
+                int b = int.Parse(zestaw[1]);
+
+                int temp = 0;
+                do
+                {
+                    temp += a;                   
+                } while (temp % b != 0);
+                output[i] = temp;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(output[i]);
+            }
+            
+        }
+    }
+}
