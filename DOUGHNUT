@@ -1,0 +1,26 @@
+using System;
+
+namespace DOUGHNUT
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+
+                string[] s = Console.ReadLine().Split(' ');
+
+                int c = int.Parse(s[0]);
+                int k = int.Parse(s[1]);
+                int w = int.Parse(s[2]);
+
+                if (k >= c * w) Console.WriteLine("yes");
+
+                else Console.WriteLine("no");
+            }
+        }
+    }
+}
