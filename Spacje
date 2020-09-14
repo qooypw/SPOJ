@@ -1,0 +1,42 @@
+using System;
+using System.IO;
+
+namespace Spacje
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine();
+            while (input != null)
+            {              
+                bool nastepnaDuza = false;
+                string output = string.Empty;
+                //string input = "     dzisiaj jest czwartek,\na jutro bedzie piatek.    asd dasdads   aw   ";
+                for (int i = 0; i < input.Length; i++)
+                {
+                    if (input[i] == ' ')
+                    {
+                        nastepnaDuza = true;
+                    }
+                    else
+                    {
+                        if (nastepnaDuza && input[i] != ' ')
+                        {
+                            output += char.ToUpper(input[i]);
+                            nastepnaDuza = false;
+                        }
+                        else
+                        {
+                            output += input[i];
+                            nastepnaDuza = false;
+                        }
+                    }
+                }
+                Console.WriteLine(output);
+                input = Console.ReadLine();
+            }
+            //s = Console.ReadLine();
+        }
+    }
+}
