@@ -1,0 +1,56 @@
+using System;
+using System.Threading;
+
+namespace Flamaster
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            string[] s = new string[n];
+
+
+            for (int i = 0; i < n; i++)
+            {
+                s[i] = Console.ReadLine();
+            }
+            for (int i = 0; i < n; i++)
+            {
+
+                Skracanie(s[i]);
+            }
+        }
+
+        public static void Skracanie(string s)
+        {
+            char temp = s[0];
+            int count = 0;
+            for (int i = 0; i < s.Length; i++)
+            {
+
+                if (s[i] == temp)
+                {
+                    count++;                  
+                }
+                if(s[i] != temp)
+                {
+                    if (count == 1) Console.Write(s[i-1]);
+                    if (count == 2) Console.Write("{0}{0}",s[i-1]);
+                    if (count > 2) Console.Write("{0}{1}",s[i-1],count);
+                    temp = s[i];
+                    i--;
+                    count = 0;
+                }if(i == s.Length - 1)
+                {
+                    if (count == 1) Console.Write(s[i]);
+                    if (count == 2) Console.Write("{0}{0}", s[i]);
+                    if (count > 2) Console.Write("{0}{1}", s[i], count);
+                }
+
+            }
+                Console.WriteLine();
+            
+        }
+    }
+}
