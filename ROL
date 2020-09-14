@@ -1,0 +1,38 @@
+using System;
+
+namespace ROL
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                string[] tab = Console.ReadLine().Split(' ');
+
+                int[] liczby = new int[int.Parse(tab[0])];
+
+                for (int j = 0; j < liczby.Length; j++)
+                {
+                    liczby[j] = int.Parse(tab[j + 1]);
+                }
+
+                int temp = liczby[0];
+
+                for (int j = 0; j < liczby.Length-1; j++)
+                {
+                    liczby[j] = liczby[j + 1];
+                }
+                liczby[liczby.Length - 1] = temp;
+
+                foreach (int item in liczby)
+                {
+                    Console.Write(item+" ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
