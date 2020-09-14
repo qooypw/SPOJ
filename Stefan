@@ -1,0 +1,45 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Stefan
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            int[] tab = new int[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                tab[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine(Zysk(tab));
+
+        }
+
+        static int Zysk(int[] tab)
+        {
+            
+            int sumsofar = 0;
+
+            for (int i = 0; i < tab.Length; i++)
+            {
+                for (int j = i; j < tab.Length; j++)
+                {
+                    int suma = 0;
+
+                    for (int k = i; k <= j; k++)
+                    {
+                        suma += tab[k];
+                    }
+                    sumsofar = Math.Max(sumsofar, suma);
+                }
+            }
+
+            return sumsofar;
+        }
+    }
+}
