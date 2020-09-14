@@ -1,0 +1,31 @@
+using System;
+
+namespace CIAZOWY_SPECJALISTA
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                string[] s = Console.ReadLine().Split(' ');
+
+                int x = int.Parse(s[0]);
+                int y = int.Parse(s[1]);
+                int z = int.Parse(s[2]);
+
+                double left = x + y;
+                double right = y * z;
+
+                //Console.WriteLine(left);
+                //Console.WriteLine(right);
+                //Console.WriteLine(z-1);
+                double odp = Math.Round(-(left - right) * 12 / (z - 1));
+
+                Console.WriteLine(odp);
+            }
+        }
+    }
+}
