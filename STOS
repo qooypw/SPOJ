@@ -1,0 +1,61 @@
+using Microsoft.VisualBasic.CompilerServices;
+using System;
+
+namespace STOS
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            object[] stos = new object[10];
+            int count = -1;
+            string tekst;
+            while( (tekst = Console.ReadLine()) != null)
+            {
+                if(tekst == "+")
+                {
+                    count++;
+
+                    if(count >=0 && count < 10)
+                    {
+                        string s = Console.ReadLine();
+                        stos[count] = s;
+                        Console.WriteLine(":)");
+
+                    }
+                    else
+                    {
+                        Console.ReadLine();
+                        Console.WriteLine(":(");
+                    }
+                }
+                else
+                {
+                    if(count < 0)
+                    {
+                        count = 0;
+                    }
+                    else if (count > 9)
+                    {
+                        count = 9;
+                    }
+                    
+
+                    if(stos[count] != null)
+                    {
+                        Console.WriteLine(stos[count]);
+                        stos[count] = null;
+                    }
+                    else
+                    {
+                        Console.WriteLine(":(");
+                    }
+                    count--;
+                }
+            }
+            
+        }
+
+    }
+}
