@@ -1,0 +1,34 @@
+using System;
+
+namespace Punkty_w_okregu
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] s = Console.ReadLine().Split(' ');
+
+            int sAo = int.Parse(s[0]);
+            int sBo = int.Parse(s[1]);
+            double ro = double.Parse(s[2]);
+
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                string[] ss = Console.ReadLine().Split(' ');
+
+                int pA = int.Parse(ss[0]);
+                int pB = int.Parse(ss[1]);
+
+                double l = Math.Sqrt(Math.Pow((double)(pA - sAo), 2) + Math.Pow((double)(pB - sBo), 2));
+                
+
+                if (ro < l) Console.WriteLine("O");
+                else if (ro > l) Console.WriteLine("I");
+                else Console.WriteLine("E");
+            }
+
+        }
+    }
+}
