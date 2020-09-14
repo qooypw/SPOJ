@@ -1,0 +1,19 @@
+using System;
+
+namespace Połowa
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                string s = Console.ReadLine();
+
+                Console.WriteLine(s.Remove(s.Length/2));
+            }
+        }
+    }
+}
