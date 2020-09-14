@@ -1,0 +1,72 @@
+using System;
+using System.Linq;
+
+namespace Konkurs_pseudomatematyczny
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < t; i++)
+            {
+                int size = int.Parse(Console.ReadLine());
+
+                int[] score = new int[size];
+                string[] temp = Console.ReadLine().Split(' ');
+
+                score = Tablica(temp,size);
+
+                int count = MaxCount(score);
+
+                if(count > 1)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        Console.Write(score.Max() + " ");
+                    }
+                    for (int j = 0; j < score.Length-count; j++)
+                    {
+                        Console.Write(score[j]+" ");
+                    }
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.Write(score.Max()+" ");
+                    for (int j = 0; j < score.Length-1; j++)
+                    {
+                        Console.Write(score[j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+        static int[] Tablica(string[] s, int r)
+        {
+            int[] tab = new int[r];           
+
+            for (int j = 0; j < r; j++)
+            {
+                tab[j] = int.Parse(s[j]);               
+            }
+            Array.Sort(tab);
+
+            return tab;
+        }
+
+        static int MaxCount(int[] tab)
+        {
+            int maxCount = 0;
+            for (int j = tab.Length - 1; j >= 0; j--)
+            {
+                if (tab.Max() == tab[j])
+                {
+                    maxCount++;
+                }
+            }
+            return maxCount;
+        }
+    }
+}
