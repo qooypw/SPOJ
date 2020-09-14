@@ -1,0 +1,38 @@
+using System;
+
+namespace DWUMIAN
+{
+    class Program
+    {
+        static void Main()
+        {
+            int t = int.Parse(Console.ReadLine());
+
+            int[] tab = new int[t];
+
+            for (int i = 0; i < t; i++)
+            {
+                string s = Console.ReadLine();
+                string[] split = s.Split(' ');
+
+                double n = double.Parse(split[0]);
+                double k = double.Parse(split[1]);
+                Console.WriteLine(silnia(n,k));
+
+            }
+           
+        }
+
+
+        static double silnia(double n, double k)
+        {
+            double suma = 1;
+            for (int i = 1; i <= k; i++)
+            {
+                suma = (suma * (n - i + 1)) / i;
+            }
+            return Math.Round(suma);
+        }
+    }
+
+}
