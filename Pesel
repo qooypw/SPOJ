@@ -1,0 +1,57 @@
+using System;
+
+namespace PESEL
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int liczbaTestow = int.Parse(Console.ReadLine());
+            int[] wyniki = new int[liczbaTestow];
+
+            for (int i = 0; i < liczbaTestow; i++)
+            {
+                string s = Console.ReadLine();
+                int wynik = 0;
+
+                for (int j = 0; j < s.Length; j++)
+                {
+                    if (j == 1 || j == 5 || j == 9)
+                    {
+                        wynik += (int)char.GetNumericValue((s[j])) * 3;
+                    }
+                    else if (j == 2 || j == 6)
+                    {
+                        wynik += (int)char.GetNumericValue((s[j])) * 7;
+                    }
+                    else if (j == 3 || j == 7)
+                    {
+                        wynik += (int)char.GetNumericValue((s[j])) * 9;
+                    }
+                    else
+                    {
+                        wynik += (int)char.GetNumericValue((s[j]));
+                    }
+                }
+
+                wyniki[i] = wynik;
+            }
+
+            for (int i = 0; i < liczbaTestow; i++)
+            {
+                if (wyniki[i] > 0)
+                {
+                    if (wyniki[i] % 10 == 0) Console.WriteLine("D");
+
+                    else Console.WriteLine("N");
+                }
+                else Console.WriteLine("N");
+            }
+
+
+
+
+            
+        }
+    }
+}
